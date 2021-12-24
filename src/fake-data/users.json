@@ -1,0 +1,13 @@
+{
+    "users": [{
+        "id": "seNToOk",
+        "createdAt": "2021-12-16T14:13:26.306Z",
+        "updatedAt": "2021-12-16T14:13:26.306Z",
+        "deletedAt": null,
+        "name": "phan van tien",
+        "age": 21,
+        "email": "tienpvse140613@gmail.com",
+        "role": 1
+    }]
+
+}
