@@ -5,6 +5,6 @@ import { IUser } from "./user";
 export interface IOrder extends IBase{
 
     user: IUser;
-    orderDetails: Array<IOrderDetails>;
+    orderDetails: IOrderDetails[];
     
 }

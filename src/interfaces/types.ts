@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { StatusCodes } from 'http-status-codes'
 
-export enum StatusCodeType {
+export enum StatusCode {
     CREATED = StatusCodes.CREATED,
     OK = StatusCodes.OK,
     BAD_REQUEST = StatusCodes.BAD_REQUEST,

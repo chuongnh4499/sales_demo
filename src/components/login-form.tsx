@@ -7,7 +7,8 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 export const LoginForm: React.FC = () => {
 
-
+    console.log();
+    
     const [isUser, setUser] = useState(false)
     const [isSale, setIsSale] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
