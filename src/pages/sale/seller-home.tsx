@@ -1,16 +1,15 @@
 import { Outlet } from 'react-router-dom'
-import LogOutButton from '../../components/logout_button'
+import { LogOutButton } from '../../components/logout-button'
 
-function SaleHomePage() {
+export const SellerHomePage: React.FC = () => {
     return (
         <div>
-            
+
             <h1>Sale</h1>
             <LogOutButton />
             <Outlet />
-            
+
         </div>
     )
 }
 
-export default SaleHomePage

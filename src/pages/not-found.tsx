@@ -1,6 +1,5 @@
-import React from 'react'
 
-function NotFound() {
+export const NotFound: React.FC = () => {
     return (
         <div>
             404 NOT FOUND THIS PAGE 
@@ -8,4 +7,3 @@ function NotFound() {
     )
 }
 
-export default NotFound

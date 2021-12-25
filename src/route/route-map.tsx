@@ -1,14 +1,16 @@
 import { RouteObject } from "react-router-dom";
-import ListProducts from "../components/user/list_products";
-import SalePost from "../components/sale/sale_post";
-import Admin from "../pages/admin/admin";
-import Login from "../pages/login";
-import NotFound from "../pages/not_found";
-import Sale from "../pages/sale/sale_home";
-import SignUp from "../pages/signup";
-import EditProfile from "../pages/user/edit_profile";
-import User from "../pages/user/user_home";
-import ManageUsers from "../components/admin/manage_users";
+import { ListProducts } from "../components/user/list-products";
+import { SellerPost } from "../components/sale/seller-post";
+import { Admin } from "../pages/admin/admin";
+import { Login } from "../pages/login";
+import { NotFound } from "../pages/not-found";
+import { SellerHomePage } from "../pages/sale/seller-home";
+import { SignUp } from "../pages/signup";
+import { EditProfile } from "../pages/user/edit-profile";
+import { UserHomePage } from "../pages/user/user-home";
+import { ManageUsers } from "../components/admin/manage-users";
+import { SignUpForm } from "../components/signup-form";
+import { SalesRegistration } from "../pages/user/sales-registration";
 
 
 export const route: RouteObject[] = [
@@ -21,37 +23,47 @@ export const route: RouteObject[] = [
         element: <Admin />,
         children: [
             {
-                path: "",
+                index: true,
                 element: <ManageUsers />
             }
         ]
     },
     {
-        path: "/sale",
-        element: <Sale />,
+        path: "/seller",
+        element: <SellerHomePage />,
         children: [
             {
-                path: "",
-                element: <SalePost />
+                index: true,
+                element: <SellerPost />
             }
         ]
     },
     {
-        path: "/register",
-        element: <SignUp />
+        path: "/signup",
+        element: <SignUp />,
+        children: [
+            {
+                index: true,
+                element: <SignUpForm />
+            }
+        ]
     },
     {
         path: "/user",
-        element: <User />,
+        element: <UserHomePage />,
         children: [
             {
-                path: "",
+                index: true,
                 element: <ListProducts />
             },
             {
                 path: "profile/:id",
                 element: <EditProfile />
             },
+            {
+                path: "sales-registration",
+                element: <SalesRegistration />
+            }
         ]
     },
     {

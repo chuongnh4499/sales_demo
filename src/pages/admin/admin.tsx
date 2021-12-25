@@ -1,8 +1,7 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
-import LogOutButton from '../../components/logout_button'
+import { LogOutButton } from '../../components/logout-button'
 
-function Admin() {
+export const Admin: React.FC = () => {
     return (
         <div>
             <h1>Admin</h1>
@@ -11,5 +10,3 @@ function Admin() {
         </div>
     )
 }
-
-export default Admin

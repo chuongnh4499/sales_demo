@@ -6,6 +6,48 @@
 table,
 th,
 td {
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 2px;
+}
+
+.login-form {
+    width: 300px;
+    display: inline-block;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.ant-col-rtl .login-form-forgot {
+    float: left;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.card-signup-form {
+    display: inline-block;
+}
+
+.card-seller-post {
+    display: inline-block;
+}
+
+.card-sales-registration {
+    display: inline-block;
+}
+
+.signup-form {
+    width: 400px;
+}
+
+.seller-post-form {
+    width: 400px;
+}
+
+.ant-form-item-explain-error {
+    float: left;
+    font-size: 16px;
 }

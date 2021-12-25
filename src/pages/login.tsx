@@ -1,7 +1,15 @@
 import React from 'react'
-import LoginForm from '../components/login_form'
+import { LoginForm } from '../components/login-form'
+import { getUser } from '../api/users'
+import { useQuery } from 'react-query'
 
-function Login() {
+
+export const Login: React.FC = () => {
+
+    const { data } = useQuery('user', getUser)
+
+    console.log(data);
+    
     return (
         <div>
             <h1>Login</h1>
@@ -9,5 +17,3 @@ function Login() {
         </div>
     )
 }
-
-export default Login

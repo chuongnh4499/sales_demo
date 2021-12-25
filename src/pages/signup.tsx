@@ -1,11 +1,10 @@
-import React from 'react'
+import { Outlet } from "react-router-dom"
 
-function SignUp() {
+export const SignUp: React.FC = () => {
     return (
         <div>
             <h1>Sign Up</h1>
+            <Outlet />
         </div>
     )
 }
-
-export default SignUp

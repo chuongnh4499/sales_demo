@@ -1,13 +1,23 @@
 {
     "users": [{
-        "id": "seNToOk",
-        "createdAt": "2021-12-16T14:13:26.306Z",
-        "updatedAt": "2021-12-16T14:13:26.306Z",
-        "deletedAt": null,
-        "name": "phan van tien",
-        "age": 21,
-        "email": "tienpvse140613@gmail.com",
-        "role": 1
-    }]
-
+            "id": "seNToOk",
+            "createdAt": "2021-12-16T14:13:26.306Z",
+            "updatedAt": "2021-12-16T14:13:26.306Z",
+            "deletedAt": null,
+            "name": "Phan Van Tien",
+            "age": 21,
+            "email": "tienpvse140613@gmail.com",
+            "role": 1
+        },
+        {
+            "id": "ABC@123",
+            "createdAt": "2021-12-16T14:13:26.306Z",
+            "updatedAt": "2021-12-16T14:13:26.306Z",
+            "deletedAt": null,
+            "name": "Nguyen Huu Chuong",
+            "age": 22,
+            "email": "abc@gmail.com",
+            "role": 1
+        }
+    ]
 }

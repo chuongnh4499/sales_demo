@@ -1,5 +1,7 @@
 
-function ManageUsers() {
+// interface ManageUsersProps{}
+
+export const  ManageUsers: React.FC = () => {
     return (
         <div >
             <h2>Manage Users</h2>
@@ -33,4 +35,3 @@ function ManageUsers() {
     )
 }
 
-export default ManageUsers

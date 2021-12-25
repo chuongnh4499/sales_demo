@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function LogOutButton() {
+export const LogOutButton: React.FC = () => {
 
     const navigate = useNavigate();
 
@@ -15,5 +15,3 @@ function LogOutButton() {
         </>
     )
 }
-
-export default LogOutButton
