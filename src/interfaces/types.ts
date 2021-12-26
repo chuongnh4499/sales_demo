@@ -11,7 +11,7 @@ export enum StatusCode {
 }
 
 
-export enum RoleType {
+export enum Role {
     ADMIN = '1',
     USER = '2',
     SELLER = '3'

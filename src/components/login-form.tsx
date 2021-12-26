@@ -2,54 +2,62 @@ import React, { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { Button, Checkbox, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Role } from '../interfaces/types';
+import { checkLogin } from '../api/users';
+import { useMutation, useQueryClient } from 'react-query';
+import { IMutationResult, IResponseAuth } from '../interfaces/response';
+import { IError } from '../interfaces/error';
 
 // interface LoginFormProps{}
 
+export interface LoginForm {
+    email: string;
+    password: string;
+}
+
 export const LoginForm: React.FC = () => {
-
-    console.log();
+    const [role, setRole] = useState<Role>(Role.USER)
     
-    const [isUser, setUser] = useState(false)
-    const [isSale, setIsSale] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [error, setError] = useState(false)
+    const queryClient = useQueryClient()
+
+    const { mutate, isLoading, isError, isSuccess, data, error } =
+        useMutation<IMutationResult, IError, LoginForm>((dataForm) => {
+            return checkLogin(dataForm)
+        }, {
+            onSuccess: (responseData) => {
+                alert(JSON.stringify(responseData.data, null, 2));
+                queryClient.setQueryData(['userInfo', responseData.data], data)
+                setUserAuthor(responseData.data)
+            }
+        })
 
 
-    const handleSubmitUser = () => {
-        setUser(true)
-    }
-
-    const handleSubmitAdmin = () => {
-        setIsAdmin(true);
-    }
-
-    const handleErrorLogin = () => {
-        setError(true)
-    }
-    const handleSubmitSale = () => {
-        setIsSale(true)
-    }
-
-    interface LoginForm {
-        email: string;
-        password: string;
-    }
-
-    const onFinish = (data: LoginForm) => {
+    const onFinish = async (dataForm: LoginForm) => {
         const values = {
-            email: data.email,
-            password: data.password
+            email: dataForm.email,
+            password: dataForm.password
         }
-        alert(JSON.stringify(values, null, 2))
+        mutate(values)
     }
+
+    const setUserAuthor = (myData: IResponseAuth) => {
+        const roleResponse = myData?.publicData.role
+
+        if (roleResponse === Role.ADMIN) {
+            setRole(Role.ADMIN)
+        } else if (roleResponse === Role.SELLER) {
+            setRole(Role.SELLER)
+        }
+    }
+
 
     return (
         <div className="card-login-form">
-            {isUser && <Navigate to="/user" replace={true}></Navigate>}
+            {/* {role && <Navigate to="/user" replace={true}></Navigate>}
             {isSale && <Navigate to="/seller" replace={true}></Navigate>}
-            {isAdmin && <Navigate to="/admin" replace={true}></Navigate>}
+            {isAdmin && <Navigate to="/admin" replace={true}></Navigate>} */}
 
-            {error && <span style={{ color: 'red' }}>Error !!!!!</span>} <br />
+            {error && <span style={{ color: 'red' }}>{error.toString()} !!!!!</span>} <br />
 
             <Form
                 name="normal_login"
@@ -108,14 +116,6 @@ export const LoginForm: React.FC = () => {
                     <span>Or <Link to="/signup">register now!</Link></span>
                 </Form.Item>
             </Form>
-
-            <div>
-                <button onClick={handleSubmitUser}>SUBMIT (user)</button>
-                <button onClick={handleSubmitSale}>SUBMIT (sale)</button>
-                <button onClick={handleSubmitAdmin}>SUBMIT (admin)</button>
-                <button onClick={handleErrorLogin}>SUBMIT (error)</button>
-            </div>
-
         </div>
     )
 }

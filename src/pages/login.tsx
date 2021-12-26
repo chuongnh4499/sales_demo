@@ -6,10 +6,6 @@ import { useQuery } from 'react-query'
 
 export const Login: React.FC = () => {
 
-    const { data } = useQuery('user', getUser)
-
-    console.log(data);
-    
     return (
         <div>
             <h1>Login</h1>
