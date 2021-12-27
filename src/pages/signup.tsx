@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom"
+import { SignUpForm } from "../components/signup-form"
 
 export const SignUp: React.FC = () => {
     return (
         <div>
             <h1>Sign Up</h1>
-            <Outlet />
+            <SignUpForm />
         </div>
     )
 }

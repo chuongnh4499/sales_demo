@@ -12,7 +12,7 @@ export enum StatusCode {
 
 
 export enum Role {
-    ADMIN = '1',
-    USER = '2',
-    SELLER = '3'
+    USER = '1',
+    SELLER = '2',
+    ADMIN = '3'
 }
