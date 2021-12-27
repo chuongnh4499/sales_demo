@@ -1,4 +1,6 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, InputNumber } from 'antd';
+import { useUserSignUp } from '../hooks/user/mutations/useUserSignUp';
+import { Role } from '../interfaces/types';
 
 const layout = {
     labelCol: { span: 5 },
@@ -8,19 +10,34 @@ const layout = {
 const validateMessages = {
     required: '${label} is required!',
     types: {
-        email: '${label} is not a valid email!'
-    }
+        email: '${label} is not a valid email!',
+        number: '${label} is not a valid number!'
+    },
+    number: {
+        range: '${label} must be between ${min} and ${max}',
+    },
 };
+
+export interface SignUpForm {
+    name: string;
+    age: number;
+    email: string;
+    password: string;
+}
 
 export const SignUpForm: React.FC = () => {
 
-    const onFinish = (values: any) => {
-        const data = {
+    const { signup } = useUserSignUp();
+
+    const onFinish = (values: SignUpForm) => {
+        const signUpForm = {
             name: values.name,
+            age: values.age,
             email: values.email,
-            password: values.password
+            password: values.password,
+            role: Role.USER
         }
-        alert(JSON.stringify(data, null, 2));
+        signup(signUpForm)
     };
 
     return (
@@ -33,6 +50,9 @@ export const SignUpForm: React.FC = () => {
             >
                 <Form.Item name="name" label="Name" rules={[{ required: true }]}>
                     <Input />
+                </Form.Item>
+                <Form.Item name="age" label="Age" rules={[{ type: 'number', min: 0, max: 99 }]}>
+                    <InputNumber style={{ float: 'left' }} />
                 </Form.Item>
                 <Form.Item name="email" label="Email" rules={[{ type: 'email' }]}>
                     <Input />

@@ -7,6 +7,7 @@ export interface IUser extends IBase {
     name: string;
     age: number;
     email: string;
+    password: string;
     role: Role;
 
 }

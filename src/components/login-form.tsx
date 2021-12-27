@@ -12,13 +12,13 @@ export interface LoginForm {
 }
 
 export const LoginForm: React.FC = () => {
-    const { mutate, error, role } = useUserLogin()    
+    const { login, error, role } = useUserLogin()    
     const onFinish = async (dataForm: LoginForm) => {
         const values = {
             email: dataForm.email,
             password: dataForm.password
         }
-        mutate(values)
+        login(values)
     }
     //Lưu state -> cookies
 
