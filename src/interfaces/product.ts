@@ -1,8 +1,7 @@
 import { IBase } from "./base";
 import { IOrderDetails } from "./order-details";
 
-
-export interface IProduct extends IBase {
+export interface IItems extends IBase {
     name: string;
     description: string;
     orderDetails: IOrderDetails[];
@@ -14,4 +13,9 @@ export interface IMetaProduct {
     itemsPerPage: number,
     totalPages: number,
     currentPage: number
+}
+
+export interface IProduct {
+    items: IItems[];
+    meta: IMetaProduct;
 }

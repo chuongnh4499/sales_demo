@@ -1,25 +1,22 @@
+import { useQuery } from "react-query"
+import { getProduct } from "../../api/product"
 
 export const ListProducts: React.FC = () => {
+    const { data } = useQuery('list-products-public', getProduct)
+    
     return (
         <div>
             <h2>List Products</h2>
             <ul>
-                <li style={{ listStyleType: 'none' }}>
-                    <span style={{ margin: '10px' }}>Iphone 8</span>
-                    <button>Buy</button>
-                </li>
-                <li style={{ listStyleType: 'none' }}>
-                    <span style={{ margin: '10px' }}>Iphone X</span>
-                    <button>Buy</button>
-                </li>
-                <li style={{ listStyleType: 'none' }}>
-                    <span style={{ margin: '10px' }}>Iphone 11</span>
-                    <button>Buy</button>
-                </li>
-                <li style={{ listStyleType: 'none' }}>
-                    <span style={{ margin: '10px' }}>Iphone 13</span>
-                    <button>Buy</button>
-                </li>
+                {data?.data.items.map((value, index) => {
+                    return (
+                        <li key={index} style={{ listStyleType: 'none' }}>
+                            <span style={{ margin: '10px' }}>{value.name}</span>
+                            <button>Buy</button>
+                        </li>
+                    )
+                })}
+                
             </ul>
         </div>
     )

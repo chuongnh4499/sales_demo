@@ -1,4 +1,4 @@
-import { IMutationResult, IResponse } from "../../interfaces/response";
+import { IMutationResult, IResponse, IResponseAuth } from "../../interfaces/response";
 import { IUser } from "../../interfaces/user";
 import { LoginForm } from "../../components/login-form";
 import { NavigateFunction } from "react-router-dom";
@@ -9,15 +9,15 @@ export const getUser = async () => {
     return response;
 }
 
-export const checkLogin = async (data: LoginForm, callback?: NavigateFunction) => {
+export const checkLogin = async (dataForm: LoginForm, callback?: NavigateFunction) => {
 
 
-    const response: IMutationResult = await instance.post('/auth', data);
+    const { data } = await instance.post('/auth', dataForm);
 
     //sau khi auth thành công
     //gọi callback
     //nếu data role = user
     // callback("/user")
 
-    return response;
+    return data as IResponseAuth;
 }
