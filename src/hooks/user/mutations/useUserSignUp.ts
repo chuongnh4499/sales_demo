@@ -14,7 +14,7 @@ export const useUserSignUp = () => {
 
     const SignUpSuccess = (responseData: IResponse<IUser>) => {
         alert(JSON.stringify(responseData, null, 2));
-        queryClient.setQueryData(['register-info-success', responseData], data)
+        queryClient.setQueryData(['register-info-success', responseData], data);
     }
 
     const { mutate, data } =

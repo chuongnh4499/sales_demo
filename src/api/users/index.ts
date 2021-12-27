@@ -5,9 +5,9 @@ import { NavigateFunction } from "react-router-dom";
 import { instance } from "../server/axios";
 import { SignUpForm } from "../../components/signup-form";
 
-export const getUser = async () => {
-    const response: IResponse<IUser> = await instance.get('/users');
-    return response;
+export const getAllUsers = async () => {
+    const { data } = await instance.get('/user/paginate');
+    return data as IResponse<IUser>;
 }
 
 export const checkLogin = async (dataForm: LoginForm, callback?: NavigateFunction) => {
