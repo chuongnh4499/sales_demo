@@ -50,6 +50,7 @@ export const UserHomePage: React.FC = () => {
                         >Cart
                         </Button>
                     </Badge>
+
                     <LogOutButton />
                 </Space>
             </div>

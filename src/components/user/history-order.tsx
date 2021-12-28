@@ -7,25 +7,22 @@ export const HistoryOrder: React.FC = () => {
 
     const { data, isLoading } = useHistoryOrders();
 
-    const dataTest = [
-        'Racing car sprays burning fuel into crowd.',
-        'Japanese princess to wed commoner.',
-        'Australian walks 100km after outback crash.',
-        'Man charged over missing wedding girl.',
-        'Los Angeles battles huge wildfires.',
-    ];
-
     return (
         <>
             <h2>History Orders</h2>
             <div style={{ width: '50%', display: 'inline-block', textAlign: 'left', marginBottom: 50 }}>
-                <List
+                {data?.data.items.map((order) => <List
+                    key={order.id}
                     loading={isLoading}
-                    style={{ backgroundColor: 'white' }}
+                    style={{ backgroundColor: 'white', marginTop: 16 }}
                     header={<div>Orders</div>}
-                    footer={<div>Date: {data?.data.items[0].createdAt} </div>}
+                    footer={
+                        <div>
+                                <span>Date: {order.createdAt}</span>
+                                <span style={{float: 'right'}}>ID: {order.id}</span>
+                        </div>}
                     bordered
-                    dataSource={data?.data.items[0].orderDetails}
+                    dataSource={order.orderDetails}
                     renderItem={item => (
                         <List.Item>
                             <Space>
@@ -34,7 +31,8 @@ export const HistoryOrder: React.FC = () => {
                             </Space>
                         </List.Item>
                     )}
-                />
+                />)}
+
             </div>
         </>
     )
