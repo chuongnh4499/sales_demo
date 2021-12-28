@@ -1,4 +1,5 @@
 import { Form, Input, InputNumber, Button } from 'antd';
+import { usePostProduct } from '../../hooks/product/mutations/usePostProduct';
 
 // interface SellerPostProps{}
 
@@ -18,10 +19,16 @@ const validateMessages = {
     },
 };
 
-export const SellerPost: React.FC = () => {
+export interface ProductForm {
+    name: string;
+    description: string
+}
 
-    const onFinish = (values: any) => {
-        alert(JSON.stringify(values, null, 2));
+export const SellerPost: React.FC = () => {
+    const { addProduct } = usePostProduct();
+
+    const onFinish = (values: ProductForm) => {        
+        addProduct(values);
     };
 
     return (
@@ -35,20 +42,20 @@ export const SellerPost: React.FC = () => {
                     className="seller-post-form"
                 >
                     <Form.Item
-                        name={['product', 'name']}
+                        name="name"
                         label="Name"
                         rules={[{ required: true }]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        name={['product', 'quantity']}
+                        name="quantity"
                         label="Quantity"
-                        rules={[{ type: 'number', min: 0, max: 99, required: true }]}
+                        rules={[{ type: 'number', min: 0, max: 99 }]}
                     >
                         <InputNumber style={{ float: 'left' }} />
                     </Form.Item>
-                    <Form.Item name={['product', 'description']} label="Description">
+                    <Form.Item name="description" label="Description" rules={[{ required: true }]}>
                         <Input.TextArea />
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>

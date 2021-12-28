@@ -4,11 +4,8 @@ import { LoginForm } from "../../components/login-form";
 import { NavigateFunction } from "react-router-dom";
 import { instance } from "../server/axios";
 import { SignUpForm } from "../../components/signup-form";
-
-export const getAllUsers = async () => {
-    const { data } = await instance.get('/user/paginate');
-    return data as IResponse<IUser>;
-}
+import { ICartRequest } from "../../interfaces/request";
+import { IOrder } from "../../interfaces/order";
 
 export const checkLogin = async (dataForm: LoginForm, callback?: NavigateFunction) => {
     const { data } = await instance.post('/auth', dataForm);
@@ -37,4 +34,18 @@ export const registerForm = async (registrationForm: RegistrationForm) => {
     const { status } = await instance.post('/form', request);
 
     return status;
+}
+
+export const checkOut = async (cart: ICartRequest) => {
+
+    const { status } = await instance.post('/order', cart);
+
+    return status;
+}
+
+export const getHistoryOrders = async () => {
+
+    const { data } = await instance.get('/order');
+
+    return data as IResponse<IOrder>;
 }

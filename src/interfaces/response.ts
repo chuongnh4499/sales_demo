@@ -1,15 +1,25 @@
 
+import { IBase } from "./base";
 import { StatusCode } from "./types";
 import { IUser } from "./user";
 
-export interface IResponse<T> {
+export interface IResponse<T> extends IMeTaLink{
     message: string;
     statusCode: StatusCode;
     data: IItems<T>;
 }
 
-export interface IItems<X> {
+export interface IResponseProduct<T> extends IBase{
+    message: string;
+    statusCode: StatusCode;
+    data: T;
+}
+
+export interface IItems<X> extends IMeTaLink{
     items: X[];
+}
+
+export interface IMeTaLink {
     meta: IMeta;
     link: ILink;
 }

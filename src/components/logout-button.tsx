@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ export const LogOutButton: React.FC = () => {
 
     return (
         <>
-            <button onClick={handleLogout}>Log out</button>
+            <Button type='primary' danger onClick={handleLogout}>Log out</Button>
         </>
     )
 }

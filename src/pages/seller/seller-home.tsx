@@ -2,20 +2,23 @@ import { Button } from 'antd'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { LogOutButton } from '../../components/logout-button'
 
-export const Admin: React.FC = () => {
+export const SellerHomePage: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const onNavigate = () => {
-        navigate("/admin/user-form-register");
+    const onViewListProducts = () => {
+        navigate("/seller/view-my-product");
     }
 
     return (
         <div>
-            <h1>Admin</h1>
-            <Button onClick={onNavigate} type='primary'>List User Registration</Button>
+
+            <h1>Sale</h1>
+            <Button type='primary' onClick={onViewListProducts} >My List Products</Button>
             <LogOutButton />
             <Outlet />
+
         </div>
     )
 }
+
