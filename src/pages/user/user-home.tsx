@@ -18,12 +18,17 @@ export const UserHomePage: React.FC = () => {
         navigate(`/user/sales-registration`)
     }
 
+    const handleFormRegistration = () => {
+        navigate(`/user/form-registration`)
+    }
+
     return (
         <div>
             <h1>User Page</h1>
             <div>
                 <button onClick={handleEditProfile}>Edit Profile</button>
                 <button onClick={handleSalesRegistration}>Sales Registration</button>
+                <button onClick={handleFormRegistration}>My Form Registration</button>
                 <LogOutButton />
             </div>
             

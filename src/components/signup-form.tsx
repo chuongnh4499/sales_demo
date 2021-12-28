@@ -51,10 +51,10 @@ export const SignUpForm: React.FC = () => {
                 <Form.Item name="name" label="Name" rules={[{ required: true }]}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="age" label="Age" rules={[{ type: 'number', min: 0, max: 99 }]}>
+                <Form.Item name="age" label="Age" rules={[{ type: 'number', min: 0, max: 99, required: true }]}>
                     <InputNumber style={{ float: 'left' }} />
                 </Form.Item>
-                <Form.Item name="email" label="Email" rules={[{ type: 'email' }]}>
+                <Form.Item name="email" label="Email" rules={[{ type: 'email', required: true }]}>
                     <Input />
                 </Form.Item>
                 <Form.Item name="password" label="Password" rules={[{ required: true, message: 'Please input your password!' }]} hasFeedback>

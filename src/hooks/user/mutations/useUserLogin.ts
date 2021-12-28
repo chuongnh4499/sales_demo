@@ -33,5 +33,5 @@ export const useUserLogin = () => {
         mutate(loginForm)
     }
 
-    return { login, isLoading, isError, isSuccess, data, error, role };
+    return { login, isLoading, isError, isSuccess, error, role };
 };

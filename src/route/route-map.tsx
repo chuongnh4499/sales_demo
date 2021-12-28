@@ -11,6 +11,7 @@ import { UserHomePage } from "../pages/user/user-home";
 import { ManageUsers } from "../components/admin/manage-users";
 import { SignUpForm } from "../components/signup-form";
 import { SalesRegistration } from "../pages/user/sales-registration";
+import { UserFormRegistration } from "../pages/user/form-registration";
 
 
 export const route: RouteObject[] = [
@@ -57,6 +58,10 @@ export const route: RouteObject[] = [
             {
                 path: "sales-registration",
                 element: <SalesRegistration />
+            },
+            {
+                path: "form-registration",
+                element: <UserFormRegistration />
             }
         ]
     },

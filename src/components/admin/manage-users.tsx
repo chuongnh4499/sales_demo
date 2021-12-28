@@ -57,7 +57,7 @@ const columns = [
         render: () => (
             <Space size="middle">
                 <Button icon={<EditOutlined />} type='primary' shape="round"> Edit</Button>
-                <span>/</span>
+                <span>|</span>
                 <Button icon={<DeleteOutlined />} type='primary' danger shape="round"></Button>
             </Space>
         ),
@@ -80,7 +80,13 @@ export const ManageUsers: React.FC = () => {
     return (
         <div >
             <h2>Manage Users</h2>
-            <Table loading={isLoading} bordered={true} columns={columns} dataSource={dataTable} />
+            <Table
+                loading={isLoading}
+                bordered={true}
+                columns={columns}
+                dataSource={dataTable}
+                pagination={{position: ['bottomCenter']}}
+            />
         </div>
     )
 }

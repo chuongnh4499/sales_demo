@@ -1,5 +1,5 @@
 import { IResponse, IResponseAuth } from "../../interfaces/response";
-import { IUser } from "../../interfaces/user";
+import { IUser, RegistrationForm } from "../../interfaces/user";
 import { LoginForm } from "../../components/login-form";
 import { NavigateFunction } from "react-router-dom";
 import { instance } from "../server/axios";
@@ -25,4 +25,16 @@ export const registerUser = async (signUpForm: SignUpForm) => {
     const { data } = await instance.post('/user', signUpForm);
 
     return data as IResponse<IUser>;
+}
+
+export const registerForm = async (registrationForm: RegistrationForm) => {
+
+    const request = {
+        title: registrationForm.title,
+        description: registrationForm.description
+    }
+
+    const { status } = await instance.post('/form', request);
+
+    return status;
 }

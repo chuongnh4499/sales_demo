@@ -11,3 +11,8 @@ export interface IUser extends IBase {
     role: Role;
 
 }
+
+export interface RegistrationForm extends IBase {
+    title: string;
+    description: string;
+}
