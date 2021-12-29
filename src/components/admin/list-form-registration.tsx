@@ -1,13 +1,17 @@
 import { CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Table, Tag, Space, Button } from 'antd';
+import { ReactChild, ReactFragment, ReactPortal } from 'react';
 import { useQueryForm } from '../../hooks/user/query/useQueryUser';
+
+type valueColumnTable =
+    boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
 
 const columns = [
     {
         title: 'Title',
         dataIndex: 'title',
         key: 'title',
-        render: text => <a>{text}</a>,
+        render: (text: valueColumnTable) => <a>{text}</a>,
     },
     {
         title: 'Description',
@@ -18,7 +22,7 @@ const columns = [
         title: 'Status',
         key: 'status',
         dataIndex: 'status',
-        render: tags => (
+        render: (tags: string[]) => (
             <>
                 {tags.map(tag => {
                     let color = tag.length > 5 ? 'geekblue' : 'green';

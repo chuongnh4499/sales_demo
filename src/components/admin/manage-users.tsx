@@ -28,7 +28,7 @@ const columns = [
         title: 'Tags',
         key: 'tags',
         dataIndex: 'tags',
-        render: (tags: any[]) => (
+        render: (tags: string[]) => (
             <>
                 {tags.map(tag => {
                     if (tag === '1') {
