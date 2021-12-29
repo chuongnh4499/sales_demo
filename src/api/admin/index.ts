@@ -13,3 +13,6 @@ export const getAllFormUsers = async () => {
     return data as IResponse<RegistrationForm>;
 }
 
+// export const updateStatusForm = async () => {
+//     const {} = await instance.patch(`/form/admin/`)
+// }

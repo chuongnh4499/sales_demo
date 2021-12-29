@@ -26,7 +26,7 @@ export const LoginForm: React.FC = () => {
     return (
         <div className="card-login-form">
             {role == Role.USER && <Navigate to="/user" replace={true}></Navigate>}
-            {role == Role.SELLER && <Navigate to="/seller" replace={true}></Navigate>}
+            {role == Role.SELLER && <Navigate to="/seller/view-my-product" replace={true}></Navigate>}
             {role == Role.ADMIN && <Navigate to="/admin" replace={true}></Navigate>}
 
             {error && <span style={{ color: 'red' }}>Email or password is wrong!!</span>} <br />

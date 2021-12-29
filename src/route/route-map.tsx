@@ -41,7 +41,7 @@ export const route: RouteObject[] = [
         element: <SellerHomePage />,
         children: [
             {
-                index: true,
+                path: "post-product",
                 element: <SellerPost />
             }, 
             {

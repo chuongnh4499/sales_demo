@@ -1,6 +1,6 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Table, Tag, Space, Button } from 'antd';
-import { ReactChild, ReactFragment, ReactPortal } from 'react';
+import { ReactChild, ReactFragment, ReactPortal, useState } from 'react';
 import { useQueryProduct } from '../../hooks/seller/query/useQueryProduct';
 import { useQueryUser } from '../../hooks/user/query/useQueryUser';
 
@@ -36,9 +36,10 @@ const columns = [
 // interface ListProductsOfSellerProps {}
 
 export const ListProductsOfSeller: React.FC = () => {
-
-    const { data, isLoading } = useQueryProduct();
-
+    const [page, setPage] = useState(1);
+    const { data, isLoading } = useQueryProduct(page);
+    
+    //Fill data to table
     const dataTable = data?.data.items.map((value) => {
         return {
             key: value.id,
@@ -50,13 +51,23 @@ export const ListProductsOfSeller: React.FC = () => {
     return (
         <>
             <h2>List Products</h2>
+            <div style={{ width: '90%', display: 'inline-block', textAlign: 'left', marginBottom: 50 }}>
             <Table
                 loading={isLoading}
+                size='middle'
                 bordered={true}
                 columns={columns}
                 dataSource={dataTable}
-                pagination={{ position: ['bottomCenter'] }}
+                pagination={{
+                    position: ['topLeft'],
+                    pageSize: data?.data.meta.itemsPerPage,
+                    total: data?.data.meta.totalItems,
+                    onChange: (page) => {                        
+                        setPage(page);
+                    }
+                }}
             />
+            </div>
         </>
     )
 }
