@@ -1,17 +1,24 @@
 import { Button, Space } from 'antd'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { LogOutButton } from '../../components/logout-button'
+import { useStore } from '../../context/user';
+import { Role } from '../../interfaces/types';
 
 export const SellerHomePage: React.FC = () => {
 
     const navigate = useNavigate();
+    const { role } = useStore();
 
     const onViewListProducts = () => {
-        navigate("/seller/view-my-product");
+        navigate("/seller");
     }
 
     const goToFormPost = () => {
         navigate("/seller/post-product");
+    }
+
+    if (role !== Role.SELLER) {
+        return <Navigate to="/" replace={true}></Navigate>
     }
 
     return (

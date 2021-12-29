@@ -2,9 +2,7 @@ import { useMutation } from "react-query";
 import { checkOut } from "../../../api/users";
 import { IError } from "../../../interfaces/error";
 import { ICartRequest } from "../../../interfaces/request";
-import { IResponse } from "../../../interfaces/response";
 import { StatusCode } from "../../../interfaces/types";
-import { IUser } from "../../../interfaces/user";
 
 export const useCheckOut = () => {
 

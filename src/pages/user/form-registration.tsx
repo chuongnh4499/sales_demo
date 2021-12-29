@@ -62,7 +62,7 @@ export const UserFormRegistration: React.FC = () => {
                 <>
                     {tags.map(tag => {
                         let color = tag.length < 5 ? 'geekblue' : 'green';
-                        if (tag === 'loser') {
+                        if (tag === 'rejected') {
                             color = 'volcano';
                         }
                         return (

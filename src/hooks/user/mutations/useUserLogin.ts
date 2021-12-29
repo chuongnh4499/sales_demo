@@ -3,13 +3,12 @@ import { IResponseAuth } from '../../../interfaces/response';
 import { LoginForm } from '../../../components/login-form'
 import { IError } from '../../../interfaces/error';
 import { checkLogin } from '../../../api/users';
-import { useState } from 'react';
-import { Role } from '../../../interfaces/types';
+import { useStore } from '../../../context/user';
 
 
 export const useUserLogin = () => {
     const queryClient = useQueryClient();
-    const [role, setRole] = useState<Role>();
+    const { setRole } = useStore()
 
     const sendDataFormToCheck = (dataForm: LoginForm) => {
         return checkLogin(dataForm)
@@ -33,5 +32,5 @@ export const useUserLogin = () => {
         mutate(loginForm)
     }
 
-    return { login, isLoading, isError, isSuccess, error, role };
+    return { login, isLoading, isError, isSuccess, error };
 };

@@ -14,5 +14,5 @@ export const getAllFormUsers = async () => {
 }
 
 // export const updateStatusForm = async () => {
-//     const {} = await instance.patch(`/form/admin/`)
+//     const {} = await instance.patch(`/form/admin/`);
 // }

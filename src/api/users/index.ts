@@ -60,7 +60,7 @@ export const getFormUser = async () => {
 
 export const cancelFormUser = async (idForm: string | undefined) => {
 
-    const { status,  } = await instance.delete(`/form/${idForm}`);
+    const { status } = await instance.delete(`/form/${idForm}`);
 
     return status ;
 }
