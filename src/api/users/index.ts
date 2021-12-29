@@ -1,4 +1,4 @@
-import { IResponse, IResponseAuth } from "../../interfaces/response";
+import { IResponse, IResponseAuth, IResponseObject, IResponseForm } from "../../interfaces/response";
 import { IUser, RegistrationForm } from "../../interfaces/user";
 import { LoginForm } from "../../components/login-form";
 import { NavigateFunction } from "react-router-dom";
@@ -48,4 +48,11 @@ export const getHistoryOrders = async () => {
     const { data } = await instance.get('/order');
 
     return data as IResponse<IOrder>;
+}
+
+export const getFormUser = async () => {
+
+    const { data } = await instance.get('/form');
+
+    return data as IResponseObject<IResponseForm>;
 }

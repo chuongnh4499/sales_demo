@@ -1,21 +1,21 @@
 
 import { IBase } from "./base";
 import { StatusCode } from "./types";
-import { IUser } from "./user";
+import { IUser, RegistrationForm } from "./user";
 
-export interface IResponse<T> extends IMeTaLink{
+export interface IResponse<T> extends IMeTaLink {
     message: string;
     statusCode: StatusCode;
     data: IItems<T>;
 }
 
-export interface IResponseProduct<T> extends IBase{
+export interface IResponseObject<T> extends IBase {
     message: string;
     statusCode: StatusCode;
     data: T;
 }
 
-export interface IItems<X> extends IMeTaLink{
+export interface IItems<X> extends IMeTaLink {
     items: X[];
 }
 
@@ -39,8 +39,11 @@ export interface ILink {
     last: string
 }
 
-
-
 export interface IResponseAuth {
     publicData: IUser
 }
+
+export interface IResponseForm extends IUser {
+    form: RegistrationForm;
+}
+

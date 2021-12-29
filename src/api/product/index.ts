@@ -1,6 +1,6 @@
 import { ProductForm } from "../../components/seller/seller-post";
 import { IProduct } from "../../interfaces/product";
-import { IResponse, IResponseProduct } from "../../interfaces/response";
+import { IResponse, IResponseObject } from "../../interfaces/response";
 import { instance } from "../server/axios"
 
 export const getProduct = async () => {
@@ -19,5 +19,5 @@ export const postProduct = async (productForm: ProductForm) => {
     const {data} = await instance.post('/product', valuesForm);
 
 
-    return data as IResponseProduct<IProduct>;
+    return data as IResponseObject<IProduct>;
 }
