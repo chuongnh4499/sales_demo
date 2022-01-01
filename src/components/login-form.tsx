@@ -87,7 +87,7 @@ export const LoginForm: React.FC = () => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    <span>Or <Link to="/signup">register now!</Link></span>
+                    <span style={{float: 'right'}}>Or <Link to="/signup">register now!</Link></span>
                 </Form.Item>
             </Form>
         </div>

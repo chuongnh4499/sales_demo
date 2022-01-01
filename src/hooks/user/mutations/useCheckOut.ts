@@ -18,7 +18,8 @@ export const useCheckOut = () => {
     const { mutate, isSuccess } =
         useMutation<StatusCode, IError, ICartRequest>(fetchDataOrder,
             {
-                onSuccess: checkOutSuccess
+                onSuccess: checkOutSuccess,
+                mutationKey: 'asd'
             }
         )
 

@@ -1,68 +1,10 @@
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Table, Tag, Space, Button } from 'antd';
-import { ReactChild, ReactFragment, ReactPortal } from 'react';
+import { Table } from 'antd';
+import Column from 'antd/lib/table/Column';
 import { useQueryUser } from '../../hooks/user/query/useQueryUser';
+import { ButtonActionsUser } from './button-actions-user';
+import { TagsRole } from './tags-column';
 
 // interface ManageUsersProps{}
-type valueColumnTable =
-    boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-
-const columns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-        render: (value: valueColumnTable) => <a>{value}</a>,
-    },
-    {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
-    },
-    {
-        title: 'Email',
-        dataIndex: 'email',
-        key: 'email',
-    },
-    {
-        title: 'Tags',
-        key: 'tags',
-        dataIndex: 'tags',
-        render: (tags: string[]) => (
-            <>
-                {tags.map(tag => {
-                    if (tag === '1') {
-                        tag = 'user'
-                    } else if (tag === '2') {
-                        tag = 'manager'
-                    } else if (tag === '3') {
-                        tag = 'admin'
-                    }
-                    let color = tag.length > 5 ? 'geekblue' : 'green';
-                    if (tag === 'admin') {
-                        color = 'volcano';
-                    }
-                    return (
-                        <Tag color={color} key={tag}>
-                            {tag.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </>
-        ),
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        render: () => (
-            <Space size="middle">
-                <Button icon={<EditOutlined />} type='primary' shape="round"> Edit</Button>
-                <span>|</span>
-                <Button icon={<DeleteOutlined />} type='primary' danger shape="round"></Button>
-            </Space>
-        ),
-    },
-];
 
 export const ManageUsers: React.FC = () => {
     const { data, isLoading } = useQueryUser();
@@ -73,7 +15,7 @@ export const ManageUsers: React.FC = () => {
             name: value.name,
             age: value.age,
             email: value.email,
-            tags: [`${value.role}`]
+            tags: `${value.role}`
         }
     });
 
@@ -83,10 +25,22 @@ export const ManageUsers: React.FC = () => {
             <Table
                 loading={isLoading}
                 bordered={true}
-                columns={columns}
                 dataSource={dataTable}
-                pagination={{position: ['bottomCenter']}}
-            />
+                pagination={{ position: ['bottomCenter'] }}
+            >
+                <Column title="Name" dataIndex="name" key="name" />
+                <Column title="Age" dataIndex="age" key="age" />
+                <Column title="Email" dataIndex="email" key="email" />
+                <Column title="Tags" dataIndex="tags" key="tags"
+                    render={(tag) => <TagsRole tag={tag} />}
+                />
+                <Column
+                    title="Actions"
+                    key="actions"
+                    width={150}
+                    render={() => <ButtonActionsUser />}
+                />
+            </Table>
         </div>
     )
 }

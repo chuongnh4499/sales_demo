@@ -3,7 +3,7 @@ import { postProduct } from "../../../api/product";
 import { ProductForm } from "../../../components/seller/seller-post";
 import { IError } from "../../../interfaces/error";
 import { IProduct } from "../../../interfaces/product";
-import { IResponseProduct } from "../../../interfaces/response";
+import { IResponseObject } from "../../../interfaces/response";
 
 export const usePostProduct = () => {
 
@@ -11,7 +11,7 @@ export const usePostProduct = () => {
         return postProduct(productForm);
     }
 
-    const postProductSuccess = (responseData: IResponseProduct<IProduct>) => {
+    const postProductSuccess = (responseData: IResponseObject<IProduct>) => {
         alert(JSON.stringify(responseData, null, 2));
     }
 
@@ -20,7 +20,7 @@ export const usePostProduct = () => {
     // }
 
     const { mutate, data } =
-        useMutation<IResponseProduct<IProduct>, IError, ProductForm>(fetchDataProduct,
+        useMutation<IResponseObject<IProduct>, IError, ProductForm>(fetchDataProduct,
             {
                 onSuccess: postProductSuccess
                 // onError: postProductError
