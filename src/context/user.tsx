@@ -8,7 +8,7 @@ interface IUserContext {
     setRole: (role: Role) => void;
 }
 
-interface ICartItem{
+export interface ICartItem{
     id: string;
     name: string;
     description: string;

@@ -72,6 +72,7 @@ export const SalesRegistrationForm: React.FC<SalesRegistrationFormProps> =
                             I have read the <a href="">agreement</a>
                         </Checkbox>
                     </Form.Item>
+                    
                     <Form.Item>
                         <Button style={{ width: '100%' }} type="primary" htmlType="submit">
                             Register

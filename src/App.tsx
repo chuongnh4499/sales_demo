@@ -6,11 +6,9 @@ function App() {
   const elements = useRoutes(route)
 
   return (
-    <div className="App">
-      {/* header */}
+    <>
       {elements}
-      {/* footer */}
-    </div>
+    </>
   )
 }
 

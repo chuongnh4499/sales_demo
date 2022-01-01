@@ -15,72 +15,80 @@ import { ListFormRegistration } from "../components/admin/list-form-registration
 import { ListProductsOfSeller } from "../components/seller/list-products";
 import { Cart } from "../components/user/cart";
 import { HistoryOrder } from "../components/user/history-order";
+import App from "../App";
+import { LayOutApp } from "../pages/layout";
 
 
 export const route: RouteObject[] = [
     {
-        path: "/",
+        path: "/login",
         element: <Login />
-    },
-    {
-        path: "/admin",
-        element: <Admin />,
-        children: [
-            {
-                index: true,
-                element: <ManageUsers />
-            },
-            {
-                path: "user-form-register",
-                element: <ListFormRegistration />
-            }
-        ]
-    },
-    {
-        path: "/seller",
-        element: <SellerHomePage />,
-        children: [
-            {
-                path: "post-product",
-                element: <SellerPost />
-            }, 
-            {
-                index: true,
-                element: <ListProductsOfSeller />
-            }
-        ]
     },
     {
         path: "/signup",
         element: <SignUp />
     },
     {
-        path: "/user",
-        element: <UserHomePage />,
+        path: "/",
+        element: <LayOutApp />,
         children: [
             {
-                index: true,
-                element: <ListProducts />
+                path: "admin",
+                element: <Admin />,
+                children: [
+                    {
+                        index: true,
+                        element: <ManageUsers />
+                    },
+                    {
+                        path: "user-form-register",
+                        element: <ListFormRegistration />
+                    }
+                ]
             },
             {
-                path: "profile/:id",
-                element: <EditProfile />
+                path: "seller",
+                element: <SellerHomePage />,
+                children: [
+                    {
+                        path: "post-product",
+                        element: <SellerPost />
+                    },
+                    {
+                        index: true,
+                        element: <ListProductsOfSeller />
+                    }
+                ]
             },
             {
-                path: "sales-registration",
-                element: <SalesRegistration />
-            },
-            {
-                path: "form-registration",
-                element: <UserFormRegistration />
-            },
-            {
-                path: "cart",
-                element: <Cart />
-            },
-            {
-                path: "history-order",
-                element: <HistoryOrder />
+                path: "user",
+                element: <UserHomePage />,
+                children: [
+                    {
+                        index: true,
+                        element: <ListProducts />
+                    },
+                    {
+                        path: "profile/:id",
+                        element: <EditProfile />
+                    },
+                    {
+                        path: "sales-registration",
+                        element: <SalesRegistration />
+                    },
+                    {
+                        path: "form-registration",
+                        element: <UserFormRegistration />
+                    },
+                    {
+                        path: "cart",
+                        element: <Cart />
+                    },
+                    {
+                        path: "history-order",
+                        element: <HistoryOrder />
+                    }
+                ]
             }
         ]
     },

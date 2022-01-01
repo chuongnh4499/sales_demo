@@ -14,7 +14,7 @@ export const Admin: React.FC = () => {
     }
     
     if (role !== Role.ADMIN) {
-        return <Navigate to="/" replace={true}></Navigate>
+        return <Navigate to="/login" replace={true}></Navigate>
     }
 
     return (

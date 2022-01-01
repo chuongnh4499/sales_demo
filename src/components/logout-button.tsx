@@ -14,7 +14,7 @@ export const LogOutButton: React.FC = () => {
 
     const handleLogout = () => {
         setRole(undefined!);
-        navigate("/", { replace: true });        
+        navigate("/login", { replace: true });        
         //Remove Cookies Tokens
         removeCookie('token');
     }
