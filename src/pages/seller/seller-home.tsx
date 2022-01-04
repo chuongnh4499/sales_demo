@@ -18,7 +18,7 @@ export const SellerHomePage: React.FC = () => {
     }
 
     if (role !== Role.SELLER) {
-        return <Navigate to="/login" replace={true}></Navigate>
+        return <Navigate to="/login" replace={true} />
     }
 
     return (

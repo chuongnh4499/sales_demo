@@ -1,6 +1,6 @@
 import { Button, Card, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '../../context/user';
+import { useCartContext } from '../../context/cart-context';
 import { useCheckOut } from '../../hooks/user/mutations/useCheckOut';
 import { ButtonCheckOut } from './button-checkout';
 import { CartProduct } from './cart-product';
@@ -10,7 +10,7 @@ import { CartProduct } from './cart-product';
 export const Cart: React.FC = () => {
 
     const navigate = useNavigate();
-    const { cart, setCart } = useStore();
+    const { cart, setCart } = useCartContext();
     const { submitOrder } = useCheckOut();
 
     const handleCheckOut = () => {

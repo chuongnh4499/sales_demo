@@ -6,7 +6,6 @@ import { instance } from "../server/axios";
 import { SignUpForm } from "../../components/signup-form";
 import { ICartRequest } from "../../interfaces/request";
 import { IOrder } from "../../interfaces/order";
-import { StatusCode } from "../../interfaces/types";
 
 export const checkLogin = async (dataForm: LoginForm, callback?: NavigateFunction) => {
     const { data } = await instance.post('/auth', dataForm);
@@ -62,5 +61,11 @@ export const cancelFormUser = async (idForm: string | undefined) => {
 
     const { status } = await instance.delete(`/form/${idForm}`);
 
-    return status ;
+    return status;
+}
+
+export const getBigDataExample = async () => {
+    const { status } = await instance.get('/time/4');
+
+    return status;
 }

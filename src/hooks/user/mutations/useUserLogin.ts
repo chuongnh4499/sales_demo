@@ -4,11 +4,14 @@ import { LoginForm } from '../../../components/login-form'
 import { IError } from '../../../interfaces/error';
 import { checkLogin } from '../../../api/users';
 import { useStore } from '../../../context/user';
+import { useCookies } from 'react-cookie';
 
 
 export const useUserLogin = () => {
     const queryClient = useQueryClient();
-    const { setRole } = useStore()
+    const { setRole } = useStore();
+    const [cookies, setCookies] = useCookies();
+
 
     const sendDataFormToCheck = (dataForm: LoginForm) => {
         return checkLogin(dataForm)
@@ -17,8 +20,11 @@ export const useUserLogin = () => {
     const loggedInSuccessfully = (responseData: IResponseAuth) => {
 
         alert(JSON.stringify(responseData, null, 2));
-        queryClient.setQueryData(['userInfo', responseData], data)
-        setRole(responseData.publicData.role)
+        queryClient.setQueryData(['userInfo', responseData], data);
+        
+        setCookies('isAuthenticated', 'true', { path: "/" });
+
+        setRole(responseData.publicData.role);
     }
 
     const { mutate, isLoading, isError, isSuccess, data, error } =

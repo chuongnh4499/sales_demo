@@ -1,16 +1,22 @@
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import { Badge, Button, Space } from 'antd'
 import { useState } from 'react'
+import { useQuery } from 'react-query'
 import { Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { getBigDataExample } from '../../api/users'
 import { LogOutButton } from '../../components/logout-button'
+import { useCartContext } from '../../context/cart-context'
 import { useStore } from '../../context/user'
 import { Role } from '../../interfaces/types'
 
 
 export const UserHomePage: React.FC = () => {
 
+    // const {isLoading} = useQuery('example-data',getBigDataExample);
+
     const navigate = useNavigate();
-    const { cart, role } = useStore();
+    const { cart } = useCartContext();
+    const { role } = useStore();
     const [userID] = useState('USER@123');
 
     const handleEditProfile = () => {
@@ -37,8 +43,8 @@ export const UserHomePage: React.FC = () => {
         navigate("/seller")
     }
 
-    if(role == undefined) {
-        return <Navigate to="/" replace={true}></Navigate>
+    const handleBigData = () => {
+        return 
     }
 
     return (
@@ -47,6 +53,7 @@ export const UserHomePage: React.FC = () => {
             <div>
                 <Space size={'middle'}>
                     <Button type='primary' onClick={handleEditProfile}>Edit Profile</Button>
+                    <Button type='primary' danger onClick={handleBigData}>Get Big Data</Button>
                     {role == Role.USER ?
                         <>
                             <Button type='primary' onClick={handleSalesRegistration}>Sales Registration</Button>

@@ -1,5 +1,5 @@
 import { Card } from 'antd'
-import { ICartItem } from '../../context/user'
+import { ICartItem } from '../../context/cart-context'
 
 interface CartProductProps {
     value: ICartItem;

@@ -2,11 +2,12 @@ import { useProduct } from '../../hooks/product/query/useProduct';
 import { List, Card, Button } from 'antd';
 import { useStore } from '../../context/user';
 import { IProduct } from '../../interfaces/product';
+import { useCartContext } from '../../context/cart-context';
 
 export const ListProducts: React.FC = () => {
     const { data } = useProduct();
 
-    const { cart, setCart } = useStore()
+    const { cart, setCart } = useCartContext();
 
     const handleAddToCart = (valueProduct: IProduct) => {
         const newItem = {

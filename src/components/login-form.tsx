@@ -27,9 +27,9 @@ export const LoginForm: React.FC = () => {
 
     return (
         <div className="card-login-form">
-            {role == Role.USER && <Navigate to="/user" replace={true}></Navigate>}
-            {role == Role.SELLER && <Navigate to="/user" replace={true}></Navigate>}
-            {role == Role.ADMIN && <Navigate to="/admin" replace={true}></Navigate>}
+            {role == Role.USER && <Navigate to="/user" replace={true} />}
+            {role == Role.SELLER && <Navigate to="/user" replace={true} />}
+            {role == Role.ADMIN && <Navigate to="/admin" replace={true} />}
 
             {error && <span style={{ color: 'red' }}>Email or password is wrong!!</span>} <br />
 
@@ -87,7 +87,7 @@ export const LoginForm: React.FC = () => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    <span style={{float: 'right'}}>Or <Link to="/signup">register now!</Link></span>
+                    <span style={{ float: 'right' }}>Or <Link to="/signup">register now!</Link></span>
                 </Form.Item>
             </Form>
         </div>

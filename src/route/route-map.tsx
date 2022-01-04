@@ -15,7 +15,6 @@ import { ListFormRegistration } from "../components/admin/list-form-registration
 import { ListProductsOfSeller } from "../components/seller/list-products";
 import { Cart } from "../components/user/cart";
 import { HistoryOrder } from "../components/user/history-order";
-import App from "../App";
 import { LayOutApp } from "../pages/layout";
 
 
