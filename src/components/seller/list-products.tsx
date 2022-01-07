@@ -2,6 +2,9 @@ import { Table } from 'antd';
 import Column from 'antd/lib/table/Column';
 import { useState } from 'react';
 import { useQueryProduct } from '../../hooks/seller/query/useQueryProduct';
+import { useModalForm } from '../../hooks/useModal';
+import { IProduct } from '../../interfaces/product';
+import { ModalForm } from '../modal-form';
 import { ButtonActionsProduct } from './button-actions-product';
 
 // interface ListProductsOfSellerProps {}
@@ -9,6 +12,10 @@ import { ButtonActionsProduct } from './button-actions-product';
 export const ListProductsOfSeller: React.FC = () => {
     const [page, setPage] = useState(1);
     const { data, isLoading } = useQueryProduct(page);
+
+    const [productInfo, setProductInfo] = useState<IProduct>();
+
+    const { onClose, onShowModal, visible } = useModalForm();
 
     //Fill data to table
     const dataTable = data?.data.items.map((value) => {
@@ -41,10 +48,16 @@ export const ListProductsOfSeller: React.FC = () => {
                     <Column title="Description" dataIndex="description" key="description" />
                     <Column title="Actions" dataIndex="actions" key="actions"
                         width={150}
-                        render={() => <ButtonActionsProduct /> }
+                        render={(_, product: IProduct) =>
+                            <ButtonActionsProduct
+                                setProductInfo={setProductInfo}
+                                onShowModal={onShowModal}
+                                product={product}
+                            />}
                     />
                 </Table>
             </div>
+            <ModalForm productData={productInfo} onClose={onClose} visible={visible} />
         </>
     )
 }

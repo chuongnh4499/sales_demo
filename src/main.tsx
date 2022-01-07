@@ -30,7 +30,7 @@ ReactDOM.render(
               <QueryClientProvider client={queryClient}>
                 <ProgressBar />
                 <App />
-                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+                <ReactQueryDevtools initialIsOpen={false} />
               </QueryClientProvider>
             </BrowserRouter>
           </CartProvider>

@@ -1,11 +1,26 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Space } from 'antd'
+import { IProduct } from '../../interfaces/product'
 
-export const ButtonActionsProduct = () => {
+interface ActionsProductProps {
+    product: IProduct;
+    onShowModal: () => void;
+    setProductInfo: (product: IProduct) => void;
+}
+
+export const ButtonActionsProduct = ({ product, onShowModal, setProductInfo }: ActionsProductProps) => {
+
+    const showModalData = () => {
+        setProductInfo(product);
+        onShowModal();
+    }
+
     return (
         <Space size="middle">
-            <Button icon={<EditOutlined />} type='primary' shape="round"> Edit</Button>
+            {/* Edit */}
+            <Button onClick={showModalData} icon={<EditOutlined />} type='primary' shape="round"> Edit</Button>
             <span>|</span>
+            {/* Delete */}
             <Button icon={<DeleteOutlined />} type='primary' danger shape="round"></Button>
         </Space>
     )

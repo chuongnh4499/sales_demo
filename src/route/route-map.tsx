@@ -16,6 +16,7 @@ import { ListProductsOfSeller } from "../components/seller/list-products";
 import { Cart } from "../components/user/cart";
 import { HistoryOrder } from "../components/user/history-order";
 import { LayOutApp } from "../pages/layout";
+import { PipeLine } from "../components/pipeline";
 
 
 export const route: RouteObject[] = [
@@ -64,8 +65,12 @@ export const route: RouteObject[] = [
                 element: <UserHomePage />,
                 children: [
                     {
-                        index: true,
+                        path: "list-products",
                         element: <ListProducts />
+                    },
+                    {
+                        index: true,
+                        element: <PipeLine />
                     },
                     {
                         path: "profile/:id",
